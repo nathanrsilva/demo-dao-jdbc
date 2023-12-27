@@ -3,18 +3,20 @@ package program;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import db.DB;
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
+import model.dao.impl.SellerDaoJDBC;
 import model.entities.Department;
 import model.entities.Seller;
 
 public class Main {
 	public static void main(String[]args) {
-		Department department = new Department(23, "Books");
-		Seller seller = new Seller(12, "Joao", "joao@gmail.com", 
-				LocalDate.parse("12/03/1883", DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-				1239.0, department);
+		DaoFactory daoFactory = new DaoFactory();
 		
+		SellerDao sellerDao = daoFactory.createSellerDao();
 		
-		System.out.println(department);
+		Seller seller = sellerDao.findById(3);
 		System.out.println(seller);
 	}
 }
