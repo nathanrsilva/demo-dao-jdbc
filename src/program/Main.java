@@ -13,9 +13,9 @@ import model.entities.Seller;
 public class Main {
 	public static void main(String[]args) {
 		DaoFactory daoFactory = new DaoFactory();
-		
 		SellerDao sellerDao = daoFactory.createSellerDao();
 		
+		System.out.println("======= TEST 1: seller findById ========");
 		Seller seller = sellerDao.findById(3);
 		System.out.println(seller);
 	}
